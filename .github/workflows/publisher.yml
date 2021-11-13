@@ -45,9 +45,9 @@ jobs:
           cd ..
 
       - name: Publish
-        uses: sakebook/actions-flutter-pub-publisher@v1.3.1
+        uses: k-paxian/dart-package-publisher@v1.3
         with:
-          credential: ${{ secrets.CREDENTIAL_JSON }}
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           flutter_package: true
           skip_test: true
 

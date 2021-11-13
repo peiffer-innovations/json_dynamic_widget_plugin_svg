@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Plugin to the [JSON Dynamic Widget](https://peiffer-innovations.github.io/json_dynamic_widget) to provide SVG support utilizing the [websafe_svg](https://pub.dev/packages/websafe_svg) backed by (flutter_svg)[https://pub.dev/packages/flutter_svg].
+Plugin to the [JSON Dynamic Widget](https://peiffer-innovations.github.io/json_dynamic_widget) to provide SVG support utilizing the [websafe_svg](https://pub.dev/packages/websafe_svg) backed by [flutter_svg](https://pub.dev/packages/flutter_svg).
 
 
 ## Using the Plugin

@@ -26,6 +26,7 @@ jobs:
 
       - name: Update Schemas
         run: |
+          git config --global user.name "action"
           git config --global user.email "noop@github.com"
           git config --global url."https://action:${{secrets.REPO_TOKEN}}@github.com/".insteadOf https://github.com/
           rm -rf schemas/json_dynamic_widget_plugin_svg

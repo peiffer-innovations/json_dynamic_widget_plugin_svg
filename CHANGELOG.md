@@ -1,3 +1,8 @@
+## [1.0.0+2] - January 3rd, 2022
+
+* Dependency Updates
+
+
 ## [1.0.0+1] - November 14th, 2021
 
 * Switched GH publishing action

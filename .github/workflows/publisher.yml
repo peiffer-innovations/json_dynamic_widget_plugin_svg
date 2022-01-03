@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate
-        uses: peiffer-innovations/actions-flutter-validate@v1.1.1
+        uses: peiffer-innovations/actions-flutter-validate@v1.1.2
         with:
           flutter_package: true
 
@@ -29,9 +29,9 @@ jobs:
           git config --global user.name "action"
           git config --global user.email "noop@github.com"
           git config --global url."https://action:${{secrets.REPO_TOKEN}}@github.com/".insteadOf https://github.com/
-          rm -rf schemas/schemas/schemas/json_dynamic_widget_plugin_svg
-          mkdir schemas/schemas/schemas/json_dynamic_widget_plugin_svg
-          cp output/* schemas/schemas/schemas/json_dynamic_widget_plugin_svg
+          rm -rf schemas/schemas/json_dynamic_widget_plugin_svg
+          mkdir schemas/schemas/json_dynamic_widget_plugin_svg
+          cp output/* schemas/schemas/json_dynamic_widget_plugin_svg
           cd schemas
           git add .
           git commit --allow-empty -m "json_dynamic_widget_plugin_svg: schema update"

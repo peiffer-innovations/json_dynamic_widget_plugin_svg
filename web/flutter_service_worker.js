@@ -20,8 +20,8 @@ const RESOURCES = {
 "assets/assets/images/tiger.svg": "69a5e587569aaafc13fcb2d2c1994133",
 "assets/assets/pages/images.json": "830998ddcbafcffd6056cddf12e2b14e",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
-"index.html": "45517e8559225384aacf9c2f74e25c26",
-"/": "45517e8559225384aacf9c2f74e25c26",
+"index.html": "8c3e79e1e5c1a4bf7b7135a49b1ad32b",
+"/": "8c3e79e1e5c1a4bf7b7135a49b1ad32b",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796"
 };
 

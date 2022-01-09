@@ -23,6 +23,9 @@ dependencies:
   uuid: ^3.0.4
   websafe_svg: ^2.1.0+1
 
+false_secrets:
+  - example/web/index.html
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

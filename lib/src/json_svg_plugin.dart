@@ -4,12 +4,12 @@ import 'package:json_theme/json_theme_schemas.dart';
 
 class JsonSvgPlugin {
   static void bind(JsonWidgetRegistry registry) {
-    var schemaCache = SchemaCache();
+    final schemaCache = SchemaCache();
     schemaCache.addSchema(SvgSchema.id, SvgSchema.schema);
 
     registry.registerCustomBuilder(
       SvgBuilder.type,
-      JsonWidgetBuilderContainer(
+      const JsonWidgetBuilderContainer(
         builder: SvgBuilder.fromDynamic,
         schemaId: SvgSchema.id,
       ),

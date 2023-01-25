@@ -1,3 +1,8 @@
+## [3.0.1] - January 24th, 2022
+
+* Flutter 3.7
+
+
 ## [3.0.0] - May 14th, 2022
 
 * Flutter 3.0

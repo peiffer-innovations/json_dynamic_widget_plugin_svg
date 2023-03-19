@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:child_builder/child_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:json_class/json_class.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
+import 'package:json_dynamic_widget_plugin_svg/json_dynamic_widget_plugin_svg.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
@@ -11,14 +13,19 @@ import 'package:websafe_svg/websafe_svg.dart';
 class SvgBuilder extends JsonWidgetBuilder {
   SvgBuilder({
     required this.alignment,
+    required this.allowDrawingOutsideViewBox,
     required this.asset,
-    required this.color,
+    required this.clipBehavior,
+    required this.colorFilter,
+    required this.excludeFromSemantics,
     required this.fit,
     required this.headers,
     required this.height,
     required this.image,
+    required this.matchTextDirection,
     required this.package,
     required this.semanticsLabel,
+    required this.theme,
     required this.url,
     required this.width,
   })  : assert((asset == null && url == null) ||
@@ -31,14 +38,19 @@ class SvgBuilder extends JsonWidgetBuilder {
   static const type = 'svg';
 
   final Alignment? alignment;
+  final bool allowDrawingOutsideViewBox;
   final String? asset;
-  final Color? color;
+  final Clip clipBehavior;
+  final ColorFilter? colorFilter;
+  final bool excludeFromSemantics;
   final BoxFit? fit;
   final Map<String, String>? headers;
   final double? height;
   final String? image;
+  final bool matchTextDirection;
   final String? package;
   final String? semanticsLabel;
+  final SvgTheme? theme;
   final String? url;
   final double? width;
 
@@ -47,24 +59,30 @@ class SvgBuilder extends JsonWidgetBuilder {
   ///
   /// ```json
   /// {
-  ///   "alignment": <AlignmentGeometry>,
-  ///   "asset": <String>,
-  ///   "color": <Color>,
-  ///   "fit": <BoxFit>,
-  ///   "headers": <Map<String, String>>,
-  ///   "height": <double>,
-  ///   "image": <String>,
-  ///   "package": <String>,
-  ///   "semanticsLabel": <String>,
-  ///   "url": <String>,
-  ///   "width": <double>
+  ///   "alignment": "<AlignmentGeometry>",
+  ///   "allowDrawingOutsideViewBox": "<bool>",
+  ///   "asset": "<String>",
+  ///   "clipBehavior": "<Clip>",
+  ///   "color": "<Color>"
+  ///   "colorFilter": "<ColorFilter>",
+  ///   "excludeFromSemantics": "<bool>",
+  ///   "fit": "<BoxFit>",
+  ///   "headers": "<Map<String, String>>",
+  ///   "height": "<double>",
+  ///   "image": "<String>",
+  ///   "matchTextDirection": "<bool>",
+  ///   "package": "<String>",
+  ///   "semanticsLabel": "<String>",
+  ///   "theme": "<SvgTheme>",
+  ///   "url": "<String>",
+  ///   "width": "<double>"
   /// }
   /// ```
   ///
   /// See also:
   ///  * [ThemeDecoder.decodeAlignment]
   ///  * [ThemeDecoder.decodeBoxFit]
-  ///  * [ThemeDecoder.decodeColor]
+  ///  * [ThemeDecoder.decodeClip]
   static SvgBuilder fromDynamic(
     dynamic map, {
     JsonWidgetRegistry? registry,
@@ -73,16 +91,31 @@ class SvgBuilder extends JsonWidgetBuilder {
       throw Exception('[SvgBuilder]: map is null');
     }
 
+    final color = ThemeDecoder.decodeColor(
+      map['color'],
+      validate: false,
+    );
+
     return SvgBuilder(
       alignment: ThemeDecoder.decodeAlignment(
         map['alignment'],
         validate: false,
       ),
+      allowDrawingOutsideViewBox:
+          JsonClass.parseBool(map['allowDrawingOutsideViewBox']),
       asset: map['asset'],
-      color: ThemeDecoder.decodeColor(
-        map['color'],
-        validate: false,
-      ),
+      clipBehavior:
+          ThemeDecoder.decodeClip(map['clipBehabor']) ?? Clip.hardEdge,
+      colorFilter: color == null
+          ? ThemeDecoder.decodeColorFilter(
+              map['colorFilter'],
+              validate: false,
+            )
+          : ColorFilter.mode(
+              color,
+              BlendMode.srcIn,
+            ),
+      excludeFromSemantics: JsonClass.parseBool(map['excludeFromSemantics']),
       fit: ThemeDecoder.decodeBoxFit(
         map['fit'],
         validate: false,
@@ -92,8 +125,10 @@ class SvgBuilder extends JsonWidgetBuilder {
           : Map<String, String>.from(map['headers']),
       height: JsonClass.parseDouble(map['height']),
       image: map['image'],
+      matchTextDirection: JsonClass.parseBool(map['matchTextDirection']),
       package: map['package'],
       semanticsLabel: map['sementicsLabel'],
+      theme: SvgThemeDecoder.decode(map['theme']),
       url: map['url'],
       width: JsonClass.parseDouble(map['width']),
     );
@@ -116,11 +151,16 @@ class SvgBuilder extends JsonWidgetBuilder {
         ? WebsafeSvg.asset(
             asset!,
             alignment: alignment ?? Alignment.center,
-            color: color,
+            allowDrawingOutsideViewBox: false,
+            clipBehavior: clipBehavior,
+            colorFilter: colorFilter,
+            excludeFromSemantics: excludeFromSemantics,
             fit: fit ?? BoxFit.contain,
             height: height,
+            matchTextDirection: matchTextDirection,
             package: package,
             semanticsLabel: semanticsLabel,
+            theme: theme ?? const SvgTheme(),
             width: width,
           )
         : image != null
@@ -129,16 +169,21 @@ class SvgBuilder extends JsonWidgetBuilder {
                   image!,
                 ),
                 alignment: alignment ?? Alignment.center,
-                color: color,
+                allowDrawingOutsideViewBox: false,
+                clipBehavior: clipBehavior,
+                colorFilter: colorFilter,
+                excludeFromSemantics: excludeFromSemantics,
                 fit: fit ?? BoxFit.contain,
                 height: height,
+                matchTextDirection: matchTextDirection,
                 semanticsLabel: semanticsLabel,
+                theme: theme ?? const SvgTheme(),
                 width: width,
               )
             : WebsafeSvg.network(
                 url!,
                 alignment: alignment ?? Alignment.center,
-                color: color,
+                allowDrawingOutsideViewBox: false,
                 fit: fit ?? BoxFit.contain,
                 headers: headers,
                 height: height,

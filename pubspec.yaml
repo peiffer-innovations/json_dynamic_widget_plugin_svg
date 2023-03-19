@@ -14,14 +14,14 @@ dependencies:
   child_builder: ^2.0.0+3
   flutter:
     sdk: flutter
-  flutter_svg: ^1.0.3
-  json_class: ^2.1.2+4
-  json_dynamic_widget: '^6.0.0'
-  json_theme: '^5.0.0'
+  flutter_svg: ^2.0.4
+  json_class: '^2.2.0'
+  json_dynamic_widget: '^6.0.4'
+  json_theme: '^5.0.1+1'
   logging: ^1.0.1
   meta: ^1.7.0
   uuid: ^3.0.6
-  websafe_svg: ^2.1.1
+  websafe_svg: ^3.0.0+1
 
 false_secrets:
   - example/web/index.html

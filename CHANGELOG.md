@@ -1,4 +1,9 @@
-## [3.0.1] - January 24th, 2022
+## [3.1.0] - March 19th, 2023
+
+Updated to `websafe_svg` 3.0.0 which supports different attributes.
+
+
+## [3.0.1] - January 24th, 2023
 
 * Flutter 3.7
 

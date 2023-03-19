@@ -18,9 +18,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-dependency_overrides:
-  petitparser: ^4.4.0
-
 flutter:
   uses-material-design: true
   assets:

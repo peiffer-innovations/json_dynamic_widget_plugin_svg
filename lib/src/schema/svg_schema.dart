@@ -7,6 +7,7 @@ class SvgSchema {
   static final schema = {
     r'$schema': 'http://json-schema.org/draft-06/schema#',
     r'$id': '$id',
+    r'$children': 0,
     'title': 'Svg',
     'type': 'object',
     'additionalProperties': false,
@@ -14,6 +15,8 @@ class SvgSchema {
       'alignment': SchemaHelper.objectSchema(AlignmentSchema.id),
       'asset': SchemaHelper.stringSchema,
       'color': SchemaHelper.objectSchema(ColorSchema.id),
+      'colorBlendMode': SchemaHelper.objectSchema(BlendModeSchema.id),
+      'colorFilter': SchemaHelper.stringSchema,
       'fit': SchemaHelper.objectSchema(BoxFitSchema.id),
       'headers': SchemaHelper.anySchema,
       'height': SchemaHelper.numberSchema,

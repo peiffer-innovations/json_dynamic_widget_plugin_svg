@@ -1,3 +1,8 @@
+## [3.0.1+4] - April 11, 2023
+
+* Automated dependency updates
+
+
 ## [3.0.1+3] - April 4, 2023
 
 * Automated dependency updates
@@ -61,6 +66,7 @@ Updated to `websafe_svg` 3.0.0 which supports different attributes.
 ## [1.0.0] - November 13th, 2021
 
 * Initial release
+
 
 
 

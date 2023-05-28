@@ -3,17 +3,17 @@ description: 'A plugin to the JSON Dynamic Widget to provide SVG support to the 
 homepage: 'https://github.com/peiffer-innovations/json_dynamic_widget_plugin_svg'
 version: '3.0.1+7'
 
-environment: 
-  sdk: '>=2.19.0 <4.0.0'
+environment:
+  sdk: '>=3.0.0 <4.0.0'
 
-analyzer: 
-  exclude: 
+analyzer:
+  exclude:
     - 'lib/generated/**'
+    - 'lib/**/*.g.dart'
 
-
-dependencies: 
+dependencies:
   child_builder: '^2.0.1'
-  flutter: 
+  flutter:
     sdk: 'flutter'
   flutter_svg: '^2.0.5'
   json_class: '^2.2.1+3'
@@ -24,15 +24,14 @@ dependencies:
   uuid: '^3.0.7'
   websafe_svg: '^3.0.0+5'
 
-false_secrets: 
+false_secrets:
   - 'example/web/index.html'
 
-dev_dependencies: 
-  flutter_test: 
+dev_dependencies:
+  flutter_test:
     sdk: 'flutter'
 
-
-ignore_updates: 
+ignore_updates:
   - 'archive'
   - 'async'
   - 'boolean_selector'

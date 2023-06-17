@@ -8,7 +8,7 @@ class JsonSvgPlugin {
     schemaCache.addSchema(SvgSchema.id, SvgSchema.schema);
 
     registry.registerCustomBuilder(
-      SvgBuilder.type,
+      SvgBuilder.kType,
       const JsonWidgetBuilderContainer(
         builder: SvgBuilder.fromDynamic,
         schemaId: SvgSchema.id,

@@ -35,7 +35,7 @@ class SvgBuilder extends JsonWidgetBuilder {
         super(numSupportedChildren: kNumSupportedChildren);
 
   static const kNumSupportedChildren = 0;
-  static const type = 'svg';
+  static const kType = 'svg';
 
   final Alignment? alignment;
   final bool allowDrawingOutsideViewBox;

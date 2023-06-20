@@ -1,3 +1,8 @@
+## [3.0.2+1] - June 20, 2023
+
+* Automated dependency updates
+
+
 ## [3.0.2] - June 17th, 2023
 
 * Dart 3.0
@@ -86,6 +91,7 @@ Updated to `websafe_svg` 3.0.0 which supports different attributes.
 ## [1.0.0] - November 13th, 2021
 
 * Initial release
+
 
 
 

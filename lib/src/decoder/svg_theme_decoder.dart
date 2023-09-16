@@ -8,7 +8,9 @@ class SvgThemeDecoder {
   static SvgTheme? decode(dynamic map) {
     SvgTheme? result;
 
-    if (map != null) {
+    if (map is SvgTheme) {
+      result = map;
+    } else if (map != null) {
       result = SvgTheme(
         currentColor: ThemeDecoder.decodeColor(map['currentColor']) ??
             const Color(0xFF000000),

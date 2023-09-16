@@ -12,8 +12,8 @@ class SvgThemeDecoder {
       result = SvgTheme(
         currentColor: ThemeDecoder.decodeColor(map['currentColor']) ??
             const Color(0xFF000000),
-        fontSize: JsonClass.parseDouble(map['fontSize']) ?? 14.0,
-        xHeight: JsonClass.parseDouble(map['xHeight']),
+        fontSize: JsonClass.maybeParseDouble(map['fontSize']) ?? 14.0,
+        xHeight: JsonClass.maybeParseDouble(map['xHeight']),
       );
     }
 

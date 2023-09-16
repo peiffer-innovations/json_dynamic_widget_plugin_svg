@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'package:json_dynamic_widget_plugin_svg/json_dynamic_widget_plugin_svg.dart';
 import 'package:logging/logging.dart';
@@ -22,13 +20,13 @@ void main() async {
   final navigatorKey = GlobalKey<NavigatorState>();
 
   final registry = JsonWidgetRegistry.instance;
-  JsonSvgPlugin.bind(registry);
+  JsonSvgPluginRegistrar.registerDefaults(registry: registry);
 
   registry.navigatorKey = navigatorKey;
 
   final data = JsonWidgetData.fromDynamic(
     json.decode(await rootBundle.loadString('assets/pages/images.json')),
-  )!;
+  );
 
   runApp(
     MaterialApp(
@@ -42,7 +40,7 @@ void main() async {
 }
 
 class SvgWidgetPage extends StatelessWidget {
-  SvgWidgetPage({
+  const SvgWidgetPage({
     Key? key,
     required this.data,
   }) : super(key: key);

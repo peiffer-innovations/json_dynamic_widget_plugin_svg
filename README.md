@@ -47,7 +47,7 @@ void main() {
 
   // Bind the plugin to the registry.  This is necessary for the registry to
   // find the widget provided by the plugin
-  JsonSvgPlugin.bind(registry);
+  JsonSvgPluginRegistrar.registerDefaults(registry: registry);
 
   // ...
 }

@@ -20,7 +20,7 @@ dependencies:
   json_dynamic_widget: '^7.1.0+7'
   json_theme: '^6.4.1+5'
   logging: '^1.2.0'
-  meta: '^1.9.1'
+  meta: '^1.12.0'
   uuid: '^4.4.0'
   websafe_svg: '^3.0.1+1'
 

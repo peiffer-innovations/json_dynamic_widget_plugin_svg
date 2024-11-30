@@ -1,3 +1,8 @@
+## [4.0.1] - November 30th, 2024
+
+* Fixed analysis issue
+
+
 ## [4.0.0+26] - November 26, 2024
 
 * Automated dependency updates

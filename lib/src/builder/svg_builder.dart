@@ -10,16 +10,14 @@ part 'svg_builder.g.dart';
 /// Creates a SVG via the [WebsafeSvg] widget based on the JSON structure.
 @jsonWidget
 abstract class _SvgBuilder extends JsonWidgetBuilder {
-  const _SvgBuilder({
-    super.args,
-  });
+  const _SvgBuilder({super.args});
 
   @JsonArgEncoder('theme')
   static Map<String, dynamic> _encodeSvgTheme(SvgTheme value) => {
-        'currentColor': ThemeEncoder.encodeColor(value.currentColor),
-        'fontSize': value.fontSize,
-        'xHeight': value.xHeight,
-      };
+    'currentColor': ThemeEncoder.encodeColor(value.currentColor),
+    'fontSize': value.fontSize,
+    'xHeight': value.xHeight,
+  };
 
   @JsonArgDecoder('theme')
   SvgTheme _decodeSvgTheme({required dynamic value}) =>
@@ -54,16 +52,16 @@ class _Svg extends StatelessWidget {
     this.theme = const SvgTheme(),
     required this.url,
     required this.width,
-  })  : assert((asset == null && url == null) ||
-            (asset == null && image == null) ||
-            (image == null && url == null)),
-        assert(asset != null || image != null || url != null),
-        colorFilter = color == null
-            ? colorFilter
-            : ColorFilter.mode(
-                color,
-                BlendMode.srcIn,
-              );
+  }) : assert(
+         (asset == null && url == null) ||
+             (asset == null && image == null) ||
+             (image == null && url == null),
+       ),
+       assert(asset != null || image != null || url != null),
+       colorFilter =
+           color == null
+               ? colorFilter
+               : ColorFilter.mode(color, BlendMode.srcIn);
 
   final Alignment alignment;
   final bool allowDrawingOutsideViewBox;
@@ -87,46 +85,44 @@ class _Svg extends StatelessWidget {
   Widget build(BuildContext context) {
     return asset != null
         ? WebsafeSvg.asset(
-            asset!,
-            alignment: alignment,
-            allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
-            clipBehavior: clipBehavior,
-            colorFilter: colorFilter,
-            excludeFromSemantics: excludeFromSemantics,
-            fit: fit,
-            height: height,
-            matchTextDirection: matchTextDirection,
-            package: package,
-            semanticsLabel: semanticsLabel,
-            theme: theme,
-            width: width,
-          )
+          asset!,
+          alignment: alignment,
+          allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+          clipBehavior: clipBehavior,
+          colorFilter: colorFilter,
+          excludeFromSemantics: excludeFromSemantics,
+          fit: fit,
+          height: height,
+          matchTextDirection: matchTextDirection,
+          package: package,
+          semanticsLabel: semanticsLabel,
+          theme: theme,
+          width: width,
+        )
         : image != null
-            ? WebsafeSvg.memory(
-                base64.decode(
-                  image!,
-                ),
-                alignment: alignment,
-                allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
-                clipBehavior: clipBehavior,
-                colorFilter: colorFilter,
-                excludeFromSemantics: excludeFromSemantics,
-                fit: fit,
-                height: height,
-                matchTextDirection: matchTextDirection,
-                semanticsLabel: semanticsLabel,
-                theme: theme,
-                width: width,
-              )
-            : WebsafeSvg.network(
-                url!,
-                alignment: alignment,
-                allowDrawingOutsideViewBox: false,
-                fit: fit,
-                headers: headers,
-                height: height,
-                semanticsLabel: semanticsLabel,
-                width: width,
-              );
+        ? WebsafeSvg.memory(
+          base64.decode(image!),
+          alignment: alignment,
+          allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+          clipBehavior: clipBehavior,
+          colorFilter: colorFilter,
+          excludeFromSemantics: excludeFromSemantics,
+          fit: fit,
+          height: height,
+          matchTextDirection: matchTextDirection,
+          semanticsLabel: semanticsLabel,
+          theme: theme,
+          width: width,
+        )
+        : WebsafeSvg.network(
+          url!,
+          alignment: alignment,
+          allowDrawingOutsideViewBox: false,
+          fit: fit,
+          headers: headers,
+          height: height,
+          semanticsLabel: semanticsLabel,
+          width: width,
+        );
   }
 }
